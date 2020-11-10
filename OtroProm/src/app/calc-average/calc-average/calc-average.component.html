@@ -1,0 +1,51 @@
+
+<mat-card class="average-card">
+    <mat-card-header>
+        <div mat-card-avatar class="rauxmedia-header-image"></div>
+        <mat-card-title>Average</mat-card-title>
+        <mat-card-subtitle>Average of numbers</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{image[0]}}">
+    <canvas id="myCharOthert" width="400" height="400"></canvas>
+    <div>Promedy= {{Promed}}</div>
+    <div>Desv Standar= {{Desv}}</div>
+    <mat-card-content>
+        <p>
+            To get the average from a list of numbers, you must be sum all the numbers and divide them by the total.
+        </p>
+        <div>
+            <mat-form-field>
+                <mat-label>Insert a number and press the button add number</mat-label>
+                <input matInput placeholder="Insert a number" type="number" [(ngModel)]="inNumber">
+            </mat-form-field>
+        </div>
+        <mat-grid-list cols="3" rowHeight="3:1" *ngFor="let name of numbers; index as i">
+            <mat-grid-tile>
+                {{name}}
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <button mat-raised-button color="primary" (click)="editNumber(inNumber,i)">Edit</button>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <button mat-raised-button color="warn" (click)="deleteItem(i)">Delete</button>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <div>
+            <mat-label>Total:</mat-label>
+            <p>{{result}}</p>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <mat-grid-list cols="2" rowHeight="2:1">
+            <mat-grid-tile>
+                <div *ngIf="inNumber!==null">
+                    <button mat-stroked-button color="primary" (click)="addItem(inNumber)">Add
+                        Number</button>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <button mat-stroked-button color="warn" (click)="clear()">Clear</button>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card-actions>
+</mat-card>
